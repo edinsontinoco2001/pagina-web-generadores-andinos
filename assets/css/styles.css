@@ -219,6 +219,7 @@ section.tight{ padding: 56px 0; }
 .bg-ink{ background: var(--ink-900); color: var(--stone-100); }
 .bg-ink h2, .bg-ink h3{ color:#fff; }
 .bg-ink .eyebrow{ color: var(--rust-500); }
+.bg-ink .project-card h3{ color: var(--ink-900); }
 
 /* ---------- Two pillars (home) ---------- */
 .pillars{
