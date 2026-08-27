@@ -54,4 +54,55 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = 'mailto:ventas@generadoresandinos.pe?subject=' + asunto + '&body=' + cuerpo;
     });
   }
+
+  // Carrusel de imágenes en tarjetas de proyecto
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var slides = Array.prototype.slice.call(track.children);
+    if (slides.length <= 1) return; // no hace falta carrusel con 1 sola imagen
+
+    var index = 0;
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'car-dots';
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'car-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(dot);
+    });
+    carousel.appendChild(dotsWrap);
+
+    var prevBtn = document.createElement('button');
+    prevBtn.className = 'car-btn prev';
+    prevBtn.setAttribute('aria-label', 'Imagen anterior');
+    prevBtn.innerHTML = '‹';
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 'car-btn next';
+    nextBtn.setAttribute('aria-label', 'Imagen siguiente');
+    nextBtn.innerHTML = '›';
+    carousel.appendChild(prevBtn);
+    carousel.appendChild(nextBtn);
+
+    function update() {
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
+        d.classList.toggle('active', i === index);
+      });
+    }
+    function goTo(i) { index = (i + slides.length) % slides.length; update(); }
+
+    prevBtn.addEventListener('click', function (e) { e.stopPropagation(); goTo(index - 1); });
+    nextBtn.addEventListener('click', function (e) { e.stopPropagation(); goTo(index + 1); });
+
+    // Deslizar con el dedo (touch) en móvil
+    var startX = null;
+    carousel.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) { diff > 0 ? goTo(index - 1) : goTo(index + 1); }
+      startX = null;
+    });
+  });
 });
