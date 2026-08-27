@@ -4,7 +4,7 @@
    ========================================================= */
 :root{
   --stone-050: #F3F1EC;
-  --stone-100: #EAE7DF;
+  --stone-100: #EAE7DF; 
   --stone-200: #DCD8CD;
   --line:       #CFCABD;
   --ink-900:   #17181A;
@@ -430,3 +430,37 @@ form.contact-form{ display:grid; gap: 16px; }
   .footer-main{ grid-template-columns: 1fr; }
   .hero-stats{ grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* ---------- Project image carousel ---------- */
+.thumb.carousel{ position:relative; overflow:hidden; }
+.carousel-track{
+  display:flex;
+  height:100%;
+  transition: transform .4s ease;
+}
+.carousel-track img{
+  width:100%; height:100%; flex-shrink:0;
+  object-fit:cover;
+}
+.car-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:32px; height:32px; border-radius:50%;
+  background: rgba(23,24,26,.55);
+  color:#fff; border:none;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; line-height:1; cursor:pointer;
+  z-index:3; transition: background .15s ease;
+}
+.car-btn:hover{ background: var(--rust-600); }
+.car-btn.prev{ left:8px; }
+.car-btn.next{ right:8px; }
+.car-dots{
+  position:absolute; bottom:10px; left:0; right:0;
+  display:flex; justify-content:center; gap:6px; z-index:3;
+}
+.car-dot{
+  width:7px; height:7px; border-radius:50%;
+  background: rgba(255,255,255,.55);
+  border:none; padding:0; cursor:pointer;
+}
+.car-dot.active{ background:#fff; }
