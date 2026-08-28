@@ -155,7 +155,13 @@ button{ font-family: inherit; }
 /* ---------- Hero ---------- */
 .hero{
   position:relative;
-  background: var(--ink-900);
+  background-color: var(--ink-900);
+  background-image:
+    linear-gradient(rgba(23,24,26,.80), rgba(23,24,26,.88)),
+    url('../img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--stone-050);
   overflow:hidden;
 }
