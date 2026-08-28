@@ -157,7 +157,7 @@ button{ font-family: inherit; }
   position:relative;
   background-color: var(--ink-900);
   background-image:
-    linear-gradient(rgba(23,24,26,.80), rgba(23,24,26,.80)),
+    linear-gradient(rgba(23,24,26,.55), rgba(23,24,26,.65)),
     url('../img/hero-bg.jpg');
   background-size: cover;
   background-position: center;
