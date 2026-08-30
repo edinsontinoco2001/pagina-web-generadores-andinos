@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var asunto = encodeURIComponent('Solicitud de asesoría — ' + (data.get('empresa') || data.get('nombre') || ''));
       var cuerpo = 'Nombre: ' + nombre + '%0ANombre de empresa: ' + empresa + '%0ATeléfono: ' + telefono +
         '%0AServicio de interés: ' + servicio + '%0A%0AMensaje:%0A' + mensaje;
-      window.location.href = 'mailto:ventas@generadoresandinos.pe?subject=' + asunto + '&body=' + cuerpo;
+      window.location.href = 'mailto:ventas@generadoresandinos.com?subject=' + asunto + '&body=' + cuerpo;
     });
   }
 
